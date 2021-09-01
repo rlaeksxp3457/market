@@ -4,11 +4,11 @@
       justify="space-between"
     >
       <v-col
-        cols="6"
+        cols="12"
         align="center"
       >
         <v-img
-          class="my-5"
+          class="my-2"
           lazy-src="https://picsum.photos"
           src="https://picsum.photos/700"
           :max-height="`${Img_size}`"
@@ -22,7 +22,7 @@
           cols="12"
         >
           <div
-            class="text-h3 text-left font-weight-bold mt-5 mb-3"
+            class="text-h3 text-left font-weight-bold mt-5 mb-2"
             :class="`text-${Font_size}`"
           >
             백종원이 인정한 연돈 <small>일식</small>
