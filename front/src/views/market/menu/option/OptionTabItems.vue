@@ -6,7 +6,7 @@
     <v-divider />
     <!-- 하단 패널  -->
     <option-panel />
-
+    <!--  플로팅 버튼  -->
     <option-button />
   </v-container>
 </template>
