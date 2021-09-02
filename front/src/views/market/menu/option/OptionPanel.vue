@@ -5,10 +5,10 @@
         <v-row no-gutters>
           <v-col cols="2">
             <v-text-field
-              label="대분류 이름"
               :rules="rules"
               hide-details="auto"
               hint="대분류 이름 예시) 음료, 주류 등"
+              label="대분류 이름"
             />
           </v-col>
         </v-row>
@@ -16,12 +16,12 @@
       <v-expansion-panel-content>
         <!--   추가 버튼    -->
         <v-row>
-          <v-col xl="12">
+          <v-col cols="12">
             <v-spacer />
             <div class="add-btn">
               <v-btn
-                outlined
                 color="indigo"
+                outlined
               >
                 추가
               </v-btn>
@@ -30,17 +30,17 @@
         </v-row>
         <!--  생성되어야할 소분류 영역      -->
         <v-row justify="start">
-          <v-col xl="1">
+          <v-col cols="1">
             <!-- 체크박스 Vuetify Model in array 스크립트 작업 요망.-->
             <v-checkbox />
           </v-col>
-          <v-col xl="3">
+          <v-col cols="3">
             <v-text-field
               outlined
               placeholder="소분류 이름"
             />
           </v-col>
-          <v-col xl="3">
+          <v-col cols="3">
             <v-text-field
               outlined
               placeholder="가격"
@@ -50,14 +50,14 @@
         <v-card-actions>
           <v-spacer />
           <v-btn
-            text
             color="secondary"
+            text
           >
             취소
           </v-btn>
           <v-btn
-            text
             color="primary"
+            text
           >
             저장
           </v-btn>
