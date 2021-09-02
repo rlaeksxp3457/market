@@ -1,13 +1,13 @@
 <template>
   <v-speed-dial
     v-model="fab"
-    :top="top"
-    :bottom="bottom"
-    :right="right"
-    :left="left"
+    bottom
+    right
+    fixed
     :direction="direction"
     :open-on-hover="hover"
     :transition="transition"
+    class="floating-btn"
   >
     <template #activator>
       <v-btn
@@ -30,7 +30,7 @@
       small
       color="green"
     >
-      <v-icon>mdi-done-all</v-icon>
+      <v-icon>mdi-check-all</v-icon>
     </v-btn>
     <v-btn
       fab

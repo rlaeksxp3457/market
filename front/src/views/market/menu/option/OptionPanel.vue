@@ -3,7 +3,7 @@
     <v-expansion-panel>
       <v-expansion-panel-header>
         <v-row no-gutters>
-          <v-col cols="2">
+          <v-col cols="5">
             <v-text-field
               :rules="rules"
               hide-details="auto"
@@ -34,13 +34,13 @@
             <!-- 체크박스 Vuetify Model in array 스크립트 작업 요망.-->
             <v-checkbox />
           </v-col>
-          <v-col cols="3">
+          <v-col cols="5">
             <v-text-field
               outlined
               placeholder="소분류 이름"
             />
           </v-col>
-          <v-col cols="3">
+          <v-col cols="5">
             <v-text-field
               outlined
               placeholder="가격"

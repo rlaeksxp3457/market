@@ -119,13 +119,10 @@ const routes = [
       {
         path: "/option",
         name: "option",
-        component: () =>
-          import("@/views/market/menu/option/OptionTabItems"),
+        component: () => import("@/views/market/menu/option/OptionItems"),
       },
     ],
   },
-
-
 ];
 
 const router = new VueRouter({

@@ -1,11 +1,12 @@
 <template>
   <v-container>
     <v-row>
-      <v-col xl="9">
+      <v-col cols="12">
         <v-select
           :items="items"
           label="Menu"
           outlined
+          full-width
         />
       </v-col>
     </v-row>
