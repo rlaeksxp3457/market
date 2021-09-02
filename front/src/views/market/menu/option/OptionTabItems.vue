@@ -1,9 +1,10 @@
 <template>
   <v-container>
+    <!--  상단 dropdown  -->
     <option-select />
 
     <v-divider />
-
+    <!-- 하단 패널  -->
     <option-panel />
 
     <option-button />
