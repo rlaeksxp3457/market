@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialog.marketSignupDialog"
+    v-model="dialog"
     fullscreen
     hide-overlay
     persistent
@@ -21,25 +21,17 @@
 </template>
 <script>
 export default {
-  name: "MarketSignup",
+  name: "Signup",
   components: {
-    MarketSignupCard: () => import('@/views/signup/market/marketSignupCard'),
+    MarketSignupCard: () => import('@/views/signup/marketSignupCard')
   },
   computed: {
     dialog: {
       get() {
-        return this.$store.getters["authentiCation/getSignUpDialog"]
+        return this.$store.getters["signUp/getSignUpDialog"]
       },
       set(value) {
-        this.$store.commit('authentiCation/setSignUpDialog', value)
-      }
-    },
-    loginSwitch: {
-      get() {
-        return this.$store.getters["authentiCation/getLoginSwitch"]
-      },
-      set(value) {
-        this.$store.commit('authentiCation/setLoginSwitch', value)
+        this.$store.commit('signUp/setSignUpDialog', value)
       }
     },
   },
