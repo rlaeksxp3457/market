@@ -144,6 +144,7 @@ export default {
   },
   methods:  {
     async login() {
+      this.$session.set('market_id', 'abc')
       console.log("ww")
       this.$Axios({
         method: 'post',
@@ -158,9 +159,6 @@ export default {
         }
       }).then((response) =>{
         console.log(response.data.market_id)
-        if(response.data.market_id) {
-          this.$session.set('market_id', response.data.market_id)
-        }
         this.$router.push('/market').catch((err)=>{
           console.log(err)
         })
