@@ -88,7 +88,6 @@ export default {
         default : return '18'
       }
     },
-
   },
   created(){
     this.$store.dispatch("marketDetail/actRating",

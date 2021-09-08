@@ -28,10 +28,10 @@
         </v-col>
       </v-row>
       <v-row
-        align="center"
-        justify="start"
         v-for="(review,index) in getReviewCard"
         :key="index"
+        align="center"
+        justify="start"
         no-gutters
       >
         <v-col
@@ -41,8 +41,8 @@
         >
           <v-avatar>
             <img
-              alt="John"
               :src="imgSrc(review.Member.profile_img)"
+              alt="John"
             >
           </v-avatar>
         </v-col>
@@ -52,23 +52,23 @@
           md="1"
           xl="1"
         >
-          {{review.Member.nickname}}
+          {{ review.Member.nickname }}
         </v-col>
         <v-col
-          align="start"
           :class="`text-${Font_size}`"
+          align="start"
           lg="9"
           md="9"
           xl="9"
         >
-          {{review.created_date}}
+          {{ review.created_date }}
           <v-rating
             :size="`${Rating_size}`"
+            :value="review.rating"
             background-color="warning lighten-1"
             color="orange"
             dense
             half-increments
-            :value="review.rating"
           />
         </v-col>
         <v-col
@@ -76,19 +76,19 @@
           align="left"
           class="mt-1"
           cols="12"
-          sm="12"
           lg="12"
           md="12"
+          sm="12"
           xl="12"
         >
           <img
             v-for="(reserveImage,index) in review.Reserve_review_imgs"
             :key="index"
-            alt="John"
-            class="rounded-lg ma-2"
             :height="`${Img_size}`"
             :src="imgSrc(reserveImage.reserve_review_img)"
             :width="`${Img_size}`"
+            alt="John"
+            class="rounded-lg ma-2"
           >
         </v-col>
         <v-col
@@ -96,19 +96,19 @@
           align="left"
           class="mt-1"
           cols="12"
-          sm="12"
           lg="12"
           md="12"
+          sm="12"
           xl="12"
         >
           <img
             v-for="(orderimage,index) in review.Order_review_imgs"
             :key="index"
-            alt="John"
-            class="rounded-lg ma-2"
             :height="`${Img_size}`"
             :src="imgSrc(orderimage.order_review_img)"
             :width="`${Img_size}`"
+            alt="John"
+            class="rounded-lg ma-2"
           >
         </v-col>
         <v-col
@@ -119,13 +119,13 @@
         >
           <v-textarea
             :class="`text-${Font_size}`"
-            hide-details
-            height="200"
-            outlined
+            :value="review.review"
             dense
+            height="200"
+            hide-details
+            outlined
             readonly
             rounded
-            :value="review.review"
           />
         </v-col>
       </v-row>
@@ -175,9 +175,13 @@ export default {
       }
     }
   },
+  created(){
+   this.$store.dispatch('marketDetail/actReviews',{market_name : this.$session.get('market_name'),
+        switch :0})
+  },
   methods : {
     getReview(e){
-      if(e=="주문리뷰"){
+      if(e==="주문리뷰"){
         this.$store.dispatch('marketDetail/actReviews',{market_name : this.$session.get('market_name'),
         switch :0
         })
@@ -192,10 +196,6 @@ export default {
       name = name.replaceAll("\\", "/");
       return require(`../../../../../../back/${name}`);
     }
-  },
-  created(){
-   this.$store.dispatch('marketDetail/actReviews',{market_name : this.$session.get('market_name'),
-        switch :0})
   }
 }
 </script>

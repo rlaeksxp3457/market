@@ -3,7 +3,6 @@ import axios from 'axios';
 const state = () => ({
   reservations_number: 1,
   tabs: null,
-  tabs: null,
   select_items: [
     "주문리뷰",
     "예약리뷰"
@@ -219,7 +218,7 @@ const actions = {
   },
   actReviews({ commit }, value) {
     console.log(value.switch);
-    if(value.switch == 0){
+    if(value.switch === 0){
       axios({
             url: `http://localhost/order_review/reviews/list/${value.market_name}`,
             method: 'get',

@@ -8,9 +8,9 @@
       <router-link to="/market">
         <v-img
           :src="require('@/assets/logo.png')"
-          max-width="165"
-          max-height="30"
           contain
+          max-height="30"
+          max-width="165"
         />
       </router-link>
     </v-toolbar-title>
@@ -21,6 +21,14 @@
     >
       <v-icon>mdi-login-variant</v-icon>
     </v-btn>
+    <v-avatar
+      class="mx-2"
+    >
+      <img
+        alt="John"
+        src="https://cdn.vuetifyjs.com/images/john.jpg"
+      >
+    </v-avatar>
   </v-app-bar>
 </template>
 
