@@ -39,9 +39,6 @@ const state = () => ({
   day_holiday : null,
 })
 const getters = {
-  Get_Info_Tab(state) {
-    return state
-  },
   Get_Week(state) {
     return state.week;
   },

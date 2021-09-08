@@ -3,10 +3,12 @@
     <v-row>
       <v-col cols="12">
         <v-select
-          :items="items"
-          label="Menu"
+          v-model="Option_Select"
+          :items="getMenu_name"
+          label="메뉴 선택"
           outlined
           full-width
+          @change="setOption"
         />
       </v-col>
     </v-row>
@@ -15,7 +17,24 @@
 <script>
 export default {
   data: () => ({
-    items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
   }),
+  computed: {
+    Option_Select:{
+      set(value){
+        this.$store.commit('menu/setOption_Select_Name',value)
+      },
+      get(){
+        return this.$store.getters['menu/getOption_Select_Name']
+      }
+    },
+    getMenu_name(){
+      return this.$store.getters['menu/getMenu_option_name']
+    }
+  },
+  methods: {
+    setOption(){
+      this.$store.commit("menu/setMenu_Option")
+    }
+  }
 }
 </script>
