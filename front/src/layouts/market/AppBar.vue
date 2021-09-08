@@ -21,14 +21,6 @@
     >
       <v-icon>mdi-login-variant</v-icon>
     </v-btn>
-    <v-avatar
-      class="mx-2"
-    >
-      <img
-        alt="John"
-        src="https://cdn.vuetifyjs.com/images/john.jpg"
-      >
-    </v-avatar>
   </v-app-bar>
 </template>
 
