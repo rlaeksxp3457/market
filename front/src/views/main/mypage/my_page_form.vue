@@ -187,9 +187,8 @@ export default {
 
 <style scoped>
 .test{
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-width: 0 thin 0 0;
+  border-right: 0.1em solid rgba(0, 0, 0, 0.12);
   height: 40px;
-  max-width: 0px;
+  max-width: 0;
 }
 </style>
