@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Mypageform from "@/views/main/mypage/my_page_form";
+import Mypageform from "@/views/main/mypage/info/my_page_info";
 export default {
   name: "Mypagecard",
   components: {Mypageform},
