@@ -70,11 +70,10 @@
   </v-container>
 </template>
 <script>
-import Mypagetab from "@/views/main/mypage/my_page_tab";
 export default {
   name: "MainAppBar",
   components: {
-    Mypagetab,
+    Mypagetab: () => import('@/views/main/mypage/my_page_tab'),
     MainTabBar: () => import('@/layouts/main/Tab')
   },
   data: () => ({

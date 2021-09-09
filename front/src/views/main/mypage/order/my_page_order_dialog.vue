@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import Mypageorderdialogcard from "@/views/main/mypage/order/my_page_order_dialog_card";
 export default {
   name: "MyPageOrderDialog",
-  components: {Mypageorderdialogcard},
+  components: {
+    Mypageorderdialogcard: () => import('@/views/main/mypage/order/my_page_order_dialog_card')
+  },
   computed: {
     getFloating() {
       return this.$store.getters["mypage/getFloating"]

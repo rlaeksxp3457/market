@@ -8,8 +8,8 @@
     >
       <!-- 반복될 카드 -->
       <v-col
-        cols="auto"
         align-self="center"
+        cols="auto"
       >
         <v-checkbox
           v-model="checkbox"
@@ -18,26 +18,26 @@
       </v-col>
       <v-col
         cols="9"
-        sm="11"
-        md="9"
         lg="10"
+        md="9"
+        sm="11"
         xl="9"
       >
         <v-card
-          height="auto"
           class="pa-5"
+          height="auto"
         >
           <v-row
             align="center"
             justify="center"
           >
             <v-col
-              class="mx-4"
               align="center"
+              class="mx-4"
               cols="12"
-              sm="4"
-              md="3"
               lg="3"
+              md="3"
+              sm="4"
               xl="3"
             >
               <input
@@ -57,12 +57,12 @@
               </v-avatar>
             </v-col>
             <v-col
-              cols="12"
-              sm="4"
-              md="5"
-              lg="5"
-              xl="5"
               align="start"
+              cols="12"
+              lg="5"
+              md="5"
+              sm="4"
+              xl="5"
             >
               <v-card-title
                 :class="card_text"
@@ -71,50 +71,50 @@
                 <v-text-field
                   v-model="card.menu_name"
                   :disabled="isDisabled(card.menu_id)"
+                  :value="card.menu_name"
                   class="centered-input"
+                  dense
                   hide-details
                   label="좌석 이름"
                   outlined
-                  dense
-                  :value="card.menu_name"
                 />
               </v-card-title>
               <v-card-text
-                class="text--secondary"
                 :class="card_text"
+                class="text--secondary"
               >
                 <v-text-field
                   v-model="card.menu_info"
                   :disabled="isDisabled(card.menu_id)"
-                  hide-details
-                  outlined
-                  label="좌석 설명"
-                  dense
                   :value="card.menu_info"
+                  dense
+                  hide-details
+                  label="좌석 설명"
+                  outlined
                 />
               </v-card-text>
               <v-card-text
-                class="font-weight-bold"
                 :class="card_text"
+                class="font-weight-bold"
               >
                 <v-text-field
                   v-model="card.menu_price"
                   :disabled="isDisabled(card.menu_id)"
-                  class="centered-input"
-                  hide-details
-                  outlined
-                  label="좌석 가격"
-                  dense
                   :value="card.menu_price"
+                  class="centered-input"
+                  dense
+                  hide-details
+                  label="좌석 가격"
+                  outlined
                 />
               </v-card-text>
             </v-col>
             <v-spacer />
             <v-col
               cols="12"
-              sm="3"
-              md="3"
               lg="2"
+              md="3"
+              sm="3"
               xl="2"
             >
               <div
@@ -122,10 +122,10 @@
                 class="text-center"
               >
                 <v-btn
+                  :disabled="isDisabled(card.menu_id)"
+                  class="text-center"
                   color="error"
                   outlined
-                  class="text-center"
-                  :disabled="isDisabled(card.menu_id)"
                   @click="deleteMenu"
                 >
                   삭제
@@ -135,10 +135,10 @@
                 v-else
               >
                 <v-btn
+                  :disabled="isDisabled(card.menu_id)"
+                  class="text-center"
                   color="error"
                   outlined
-                  class="text-center"
-                  :disabled="isDisabled(card.menu_id)"
                   @click="deleteMenu"
                 >
                   삭제
@@ -154,10 +154,11 @@
 </template>
 
 <script>
-import Reservecarddialog from "@/views/market/info/reserve/Reserve_delete_dialog";
 export default {
   name: "Reservecard",
-  components: {Reservecarddialog},
+  components: {
+    Reservecarddialog: () => import('@/views/market/info/reserve/Reserve_delete_dialog')
+  },
   data: () => ({
     card_text: 'text-center text-sm-left text-md-left ',
   }),

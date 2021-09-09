@@ -148,10 +148,11 @@
 </template>
 
 <script>
-import Menucarddialog from "@/views/market/info/menu/Menu_delete_dialog";
 export default {
   name: "InfoMenucards",
-  components: {Menucarddialog},
+  components: {
+    Menucarddialog: () => import('@/views/market/info/menu/Menu_delete_dialog')
+  },
   data: () => ({
     card_text: 'text-center text-sm-left text-md-left ',
   }),
