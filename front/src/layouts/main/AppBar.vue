@@ -44,45 +44,43 @@
       >
         <v-icon>mdi-login-variant</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        to="/"
-      >
-        <v-icon>mdi-logout-variant</v-icon>
-      </v-btn>
-      <v-avatar
-        class="mx-2"
-      >
-        <img
-          alt="John"
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
+      <router-link to="/mypage">
+        <v-avatar
+          class="mx-2"
         >
-      </v-avatar>
+          <img
+            alt="John"
+            src="https://cdn.vuetifyjs.com/images/john.jpg"
+          >
+        </v-avatar>
+      </router-link>
       <template
         v-if="$route.name === 'Main'"
         #extension
       >
         <main-tab-bar />
       </template>
+      <template
+        v-else-if="$route.name === 'mypage'"
+        #extension
+      >
+        <mypagetab />
+      </template>
     </v-app-bar>
   </v-container>
 </template>
 <script>
+import Mypagetab from "@/views/main/mypage/my_page_tab";
 export default {
   name: "MainAppBar",
   components: {
+    Mypagetab,
     MainTabBar: () => import('@/layouts/main/Tab')
   },
-  computed: {
-    expand: {
-      get() {
-        return this.$store.getters["authentiCation/getExpand"]
-      },
-      set(v) {
-        this.$store.commit('authentiCation/setExpand', v)
-      }
-    }
-  },
+  data: () => ({
+    expand: false,
+  }),
+
 }
 </script>
 

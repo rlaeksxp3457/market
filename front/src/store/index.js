@@ -12,6 +12,8 @@ import market_detail from "@/store/main/marketdetail";
 import dashboard from "@/store/market/DashBoard";
 import menu from "@/store/market/menu";
 import authentiCation from "@/store/authentication";
+import mypage from "@/store/main/mypage";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -28,6 +30,7 @@ const store = new Vuex.Store({
     ...dashboard,
     ...menu,
     ...authentiCation,
+    ...mypage
   },
 });
 

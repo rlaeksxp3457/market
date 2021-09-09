@@ -8,53 +8,64 @@
     >
       <!-- 반복될 카드 -->
       <v-col
-        cols="auto"
         align-self="center"
+        cols="auto"
       >
-        {{ checkbox }}
         <v-checkbox
           v-model="checkbox"
-          :value="card.menu_id"
+          :value="index"
         />
       </v-col>
       <v-col
         cols="9"
-        sm="11"
-        md="9"
         lg="10"
+        md="9"
+        sm="11"
         xl="9"
       >
         <v-card
-          height="auto"
           class="pa-5"
+          height="auto"
         >
           <v-row
             align="center"
             justify="center"
           >
             <v-col
-              class="mx-4"
               align="center"
+              class="mx-4"
               cols="12"
-              sm="4"
-              md="3"
               lg="3"
+              md="3"
+              sm="4"
               xl="3"
             >
+              <input
+                ref="menuImageInput"
+                :disabled="isDisabled(index)"
+                hidden
+                multiple
+                type="file"
+                @change="uploadMenuImg(index)"
+              >
               <v-avatar
                 color="warning lighten-2"
                 size="130"
+                @click="onClickImgUpload(index)"
               >
-                <v-img :src="card.menu_img" />
+                <v-img
+                  v-if="card.Product_imgs !== 0 && card.Product_imgs !=null"
+                  :src="imgSrc(card.Product_imgs[0].product_img)"
+                />
               </v-avatar>
             </v-col>
             <v-col
-              cols="12"
-              sm="4"
-              md="5"
-              lg="5"
-              xl="5"
               align="start"
+              cols="12"
+              lg="5"
+              md="5"
+              sm="4"
+              xl="5"
             >
               <v-card-title
                 :class="card_text"
@@ -62,71 +73,66 @@
               >
                 <v-text-field
                   :disabled="isDisabled(index)"
+                  :value="card.name"
                   class="centered-input"
+                  dense
                   hide-details
                   label="메뉴 이름"
                   outlined
-                  dense
-                  :value="card.menu_name"
+                  @input="getName($event,index)"
                 />
               </v-card-title>
               <v-card-text
-                class="text--secondary"
                 :class="card_text"
+                class="text--secondary"
               >
                 <v-text-field
                   :disabled="isDisabled(index)"
-                  hide-details
-                  outlined
-                  label="메뉴 설명"
+                  :value="card.product_info"
                   dense
-                  :value="card.menu_info"
+                  hide-details
+                  label="메뉴 설명"
+                  outlined
+                  @input="getInfo($event,index)"
                 />
               </v-card-text>
               <v-card-text
-                class="font-weight-bold"
                 :class="card_text"
+                class="font-weight-bold"
               >
                 <v-text-field
+                  ref="priceInt"
                   :disabled="isDisabled(index)"
+                  :value="card.price"
                   class="centered-input"
-                  hide-details
-                  outlined
-                  label="가격"
                   dense
-                  :value="card.menu_price"
+                  hide-details
+                  label="가격"
+                  outlined
+                  @input="getPrice($event,index)"
                 />
               </v-card-text>
             </v-col>
             <v-spacer />
             <v-col
               cols="12"
-              sm="3"
-              md="3"
               lg="2"
+              md="3"
+              sm="3"
               xl="2"
             >
               <div
                 v-if="$vuetify.breakpoint.name === 'xs'"
                 class="text-center"
-              >
-                <v-btn
-                  color="error"
-                  outlined
-                  class="text-center"
-                  @click="deleteMenu"
-                >
-                  삭제
-                </v-btn>
-              </div>
+              />
               <v-card-actions
                 v-else
               >
                 <v-btn
+                  :index="index"
+                  class="text-center"
                   color="error"
                   outlined
-                  class="text-center"
-                  :index="index"
                   @click="deleteMenu"
                 >
                   삭제
@@ -137,21 +143,30 @@
         </v-card>
       </v-col>
     </v-row>
+    <menucarddialog />
   </v-container>
 </template>
 
 <script>
+import Menucarddialog from "@/views/market/info/menu/Menu_delete_dialog";
 export default {
   name: "InfoMenucards",
+  components: {Menucarddialog},
   data: () => ({
     card_text: 'text-center text-sm-left text-md-left ',
   }),
+
   computed: {
     cards: {
       get() {
+        console.log(this.$store.getters["menu/getMenu"])
         return this.$store.getters["menu/getMenu"]
+      },
+      set(){
+        this.$store.dispatch("menu/actMenu")
       }
     },
+    //checkbox고른거
     checkbox: {
       set(value){
         this.$store.commit("menu/setMenu_Checkbox",value)
@@ -161,8 +176,8 @@ export default {
       }
     },
   },
-  created(){
-    this.copyMenu();
+  created() {
+    this.$store.dispatch("menu/actMenu")
   },
   methods: {
     isDisabled(test){
@@ -172,8 +187,34 @@ export default {
     deleteMenu(e){
       this.$store.commit("menu/setDelete",e)
     },
-    copyMenu(){
-      this.$store.commit("menu/copymenu")
+    imgSrc(name){
+      name = name.replaceAll("\\", "/");
+      return require(`../../../../../../back/${name}`);
+    },
+    getPrice(value,index){
+      console.log(value)
+      this.$store.dispatch("menu/actUpdate",
+        {index :index, property :  "price", value : value.toString()})
+    },
+    getInfo(value,index){
+      console.log(value)
+      this.$store.dispatch("menu/actUpdate",
+        {index :index, property :  "product_info", value : value})
+    },
+    getName(value,index){
+      console.log(value)
+      this.$store.dispatch("menu/actUpdate",
+        {index :index, property :  "name", value : value})
+    },
+    onClickImgUpload (value) {
+      console.log(value)
+      this.$refs.menuImageInput[value].click();
+
+    },
+    uploadMenuImg(index){
+      console.log(this.$refs.menuImageInput[index].files[0])
+      this.$store.dispatch("menu/actUpdate",
+        {index :index, property :  "menuImg", value : this.$refs.menuImageInput[index].files[0]})
     }
   }
   }
