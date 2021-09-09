@@ -58,13 +58,21 @@
       >
         <main-tab-bar />
       </template>
+      <template
+        v-else-if="$route.name === 'mypage'"
+        #extension
+      >
+        <mypagetab />
+      </template>
     </v-app-bar>
   </v-container>
 </template>
 <script>
+import Mypagetab from "@/views/main/mypage/my_page_tab";
 export default {
   name: "MainAppBar",
   components: {
+    Mypagetab,
     MainTabBar: () => import('@/layouts/main/Tab')
   },
   data: () => ({
