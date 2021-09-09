@@ -54,7 +54,10 @@
                 justify="start"
                 class="mt-5"
               >
-                <v-col cols="1">
+                <v-col
+                  cols="auto"
+                  align="center"
+                >
                   <!-- 체크박스 Vuetify Model in array 스크립트 작업 요망.-->
                   <v-checkbox />
                 </v-col>

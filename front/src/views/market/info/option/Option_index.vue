@@ -15,8 +15,8 @@ export default {
   name: "OptionIndex",
   components: {
     OptionButton:() => import ("@/views/market/info/Option+Button"),
-    OptionPanel: () => import("@/views/market/info/option/OptionPanel"),
-    OptionSelect: () => import ("@/views/market/info/option/OptionSelect"),
+    OptionPanel: () => import("@/views/market/info/option/Option_Panel"),
+    OptionSelect: () => import ("@/views/market/info/option/Option_Select"),
   },
 }
 </script>
